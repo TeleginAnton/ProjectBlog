@@ -1,9 +1,9 @@
 from django.db import models
-from importlib._common import _
+from django.contrib.auth.models import User
 
 
 class Note(models.Model):
-    author = models.ForeignKey(max_length=30, verbose_name='Автор')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_public = models.DateField(auto_now_add=True, verbose_name='Опубликовано')
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     message = models.TextField(default=" ", verbose_name='Текст статьи')
